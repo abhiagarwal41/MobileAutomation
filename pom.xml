@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>icici</groupId>
+	<artifactId>mobile-automation</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<jre.level>1.8</jre.level>
+		<jdk.level>1.8</jdk.level>
+		<selenium-java>3.11.0</selenium-java>
+		<cucumber-junit>1.2.5</cucumber-junit>
+		<cucumber-java>1.2.5</cucumber-java>
+		<junit>4.11</junit>
+		<jdk.level>1.8</jdk.level>
+		<log4j>1.2.17</log4j>
+		<extentreports>3.1.5</extentreports>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<browserVersion />
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>${jdk.level}</source>
+					<target>${jdk.level}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<forkCount>10</forkCount>
+					<reuseForks>true</reuseForks>
+					<includes>
+						<include>**/*Test.class</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<dependencies>
+
+
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium-java}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server-standalone</artifactId>
+			<version>3.2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/selenium-server-standalone-3.2.0.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber-junit}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber-java}</version>
+		</dependency>
+
+		<dependency>
+
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>${extentreports}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.6.2</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.28</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
+
+	</dependencies>
+</project>
