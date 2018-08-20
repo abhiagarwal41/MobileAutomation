@@ -24,6 +24,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
+import io.appium.java_client.android.AndroidDriver;
 
 
 
@@ -33,7 +34,7 @@ import cucumber.api.junit.Cucumber;
 public class SwitchAppTest {
 
 	public static SoftAssertions softAssertions;
-	public static WebDriver driver;
+	public static AndroidDriver driver;
 	public static Logger log = Logger.getLogger(SwitchAppTest.class);
 	public static ExtentHtmlReporter htmlReporter;
 	public static ExtentReports extent;

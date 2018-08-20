@@ -1,5 +1,6 @@
 package com.pages.switchTestApp;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -14,10 +15,7 @@ public class SwitchTestAppLoginPage extends AbstractPage {
 			
 			switch (name.toUpperCase()) {
 			case "PASSCODE": 
-				return By.id("id/passcodeAppET");
-			case "PASSCODELABEL":
-				System.out.println("switchcase pass code label");
-				return By.xpath("//*[contains(text(),'Enter Passcode')]");
+				return By.className("android.widget.EditText");
 			default:
 				throw new NoSuchElementException(name);
 			}

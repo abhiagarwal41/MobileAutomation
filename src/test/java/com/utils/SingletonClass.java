@@ -12,15 +12,16 @@ import com.runner.SwitchAppTest;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 public class SingletonClass {
 
 	private static final SingletonClass INSTANCE = new SingletonClass();
 	private boolean isRunning = false;
-	private WebDriver driver;
+	private AndroidDriver driver;
 	private WebDriverWait webDriverWait;
 
-	public WebDriver getDriver() {
+	public AndroidDriver getDriver() {
 		return driver;
 	}
 
@@ -38,13 +39,15 @@ public class SingletonClass {
 //		caps.setCapability("udid", "ENUL6303030010"); //Give Device ID of your mobile phone
 		caps.setCapability("platformName", "Android");
 		caps.setCapability("platformVersion", "8.1.0");
+	    caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 1000);
 		caps.setCapability("appPackage", "com.rohitupreti.testapplication");
-		caps.setCapability("appActivity", "com.rohitupreti.testapplication.Activities.UserLogin.LoginActivity");
+		caps.setCapability("appActivity", ".Activities.UserLogin.LoginActivity");
+		caps.setCapability("appWaitActivity", ".Activities.UserLogin.LoginActivity");
 		caps.setCapability("noReset", "true");
 		
 		//Instantiate Appium Driver
 		try {
-				 driver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), caps);
+				 driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
 			
 		} catch (MalformedURLException e) {
 			SwitchAppTest.log.error(e.getMessage());
@@ -52,7 +55,7 @@ public class SingletonClass {
 		
 //		driver = new ChromeDriver();
 	//	driver.manage().window().maximize();
-		webDriverWait = new WebDriverWait(driver, 15);
+		webDriverWait = new WebDriverWait(driver, 60);
 
 	}
 

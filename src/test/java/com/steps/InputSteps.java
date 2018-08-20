@@ -5,8 +5,8 @@ import static com.runner.SwitchAppTest.driver;
 import static com.runner.SwitchAppTest.log;
 import static com.runner.SwitchAppTest.test;
 import static com.utils.Functions.doLogging;
-import static com.utils.Functions.getDiffDate;
 import static org.junit.Assert.fail;
+import static com.utils.Functions.getDiffDate;
 
 import java.util.List;
 

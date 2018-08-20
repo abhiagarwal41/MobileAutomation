@@ -51,23 +51,28 @@
 	</build>
 
 	<dependencies>
-
-
-
+	
+	
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>${selenium-java}</version>
+			<version>2.45.0</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server-standalone</artifactId>
-			<version>3.2.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/selenium-server-standalone-3.2.0.jar</systemPath>
+			<artifactId>selenium-server</artifactId>
+			<version>2.45.0</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>2.45.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>info.cukes</groupId>
@@ -115,13 +120,11 @@
 			<version>2.3.28</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
-			<version>4.0.0</version>
+			<version>2.2.0</version>
 		</dependency>
-
 
 	</dependencies>
 </project>

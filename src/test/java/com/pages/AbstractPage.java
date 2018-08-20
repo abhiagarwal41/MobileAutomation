@@ -4,6 +4,7 @@ package com.pages;
 import org.openqa.selenium.By;
 
 import com.pages.switchTestApp.SwitchTestAppLoginPage;
+import com.pages.switchTestApp.SwitchTestAppMobileRegisterPage;
 
 
 public abstract class AbstractPage {
@@ -21,8 +22,11 @@ public abstract class AbstractPage {
 		switch(pageName.toLowerCase()){
 		
 		case "switchtestapploginpage" :  
-			System.out.println("abstract switch case switchtestapploginpage");
+//			System.out.println("abstract switch case switchtestapploginpage");
 			testPage = new SwitchTestAppLoginPage();
+		break;
+		case "switchtestappmobileregisterpage":
+			testPage = new SwitchTestAppMobileRegisterPage();
 		break;
 		
 		default:
