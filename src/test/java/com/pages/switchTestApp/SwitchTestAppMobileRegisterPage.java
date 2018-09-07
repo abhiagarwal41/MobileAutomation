@@ -13,8 +13,12 @@ public class SwitchTestAppMobileRegisterPage extends AbstractPage{
 		switch (name.toUpperCase()) {
 		case "MOBILENUMBER": 
 			return By.className("android.widget.EditText");
+		case "REGISTERMESSAGE":
+			return By.id("com.rohitupreti.testapplication:id/listContent");
 		case "VERIFY MOBILE":
 			return By.className("android.widget.Button");
+		case "SEND":
+			return By.id("android:id/button1");
 		default:
 			throw new NoSuchElementException(name);
 		}

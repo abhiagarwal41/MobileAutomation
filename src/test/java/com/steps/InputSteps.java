@@ -7,13 +7,16 @@ import static com.runner.SwitchAppTest.test;
 import static com.utils.Functions.doLogging;
 import static org.junit.Assert.fail;
 import static com.utils.Functions.getDiffDate;
-
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
+import com.utils.Constants;
+import com.utils.Functions;
+
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class InputSteps {
@@ -95,6 +98,21 @@ public class InputSteps {
 
 	}
 
+	@Then("^I Provide \"([^\"]*)\" random text input as alphanumeric characters$")
+	public void provideRandomTextInput(String elementName) {
+		String randStr = Functions.getRandAlphaNumeric(10);
+		doLogging("Entering value :" +randStr + " in " + elementName, "INFO", log, test);
+		try {
+			WebElement element = driver.findElement(getTestPage().getElementLocator(elementName));
+			element.clear();
+			element.sendKeys(randStr);
+		} catch (NoSuchElementException ne) {
+			doLogging("Unable to find element on page : " + elementName, "FAIL", log, test);
+			fail("Unable to find element on page : " + elementName);
+		}
+
+	}
+	
 	@When("^I select date \"([^\"]*)\" days from today$")
 	public void iSelectDateDaysFromToday(int dateDiff) throws Throwable {
 		WebElement calendar = driver.findElement(By.cssSelector(".mat-calendar"));

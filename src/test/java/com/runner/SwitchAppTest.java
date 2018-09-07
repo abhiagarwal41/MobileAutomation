@@ -48,8 +48,10 @@ public class SwitchAppTest {
 		log.info("Initializing logs for LMS UI tests...");
 		application = "lms";
 		File screenshotDir = new File("./FailedTestsScreenshots/switch");
-		if (screenshotDir.exists())
-			FileUtils.cleanDirectory(screenshotDir);	
+		if (!screenshotDir.exists()) {
+			screenshotDir.mkdirs();
+		}
+		FileUtils.cleanDirectory(screenshotDir);	
 		
 	}
 
@@ -59,7 +61,12 @@ public class SwitchAppTest {
 	}
 
 	public static void intializeExtentReporting() {
-		htmlReporter = new ExtentHtmlReporter("./reports/upi_switch_app_report.html");
+		File reportsDir= new File("./reports/");
+		if(!reportsDir.exists()) {
+			reportsDir.mkdirs();
+		}
+		File reportFile = new File(reportsDir.getAbsolutePath()+"upi_switch_app_report.html");
+		htmlReporter = new ExtentHtmlReporter(reportFile);
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 		extent.setSystemInfo("Environment", System.getProperty("os.name"));

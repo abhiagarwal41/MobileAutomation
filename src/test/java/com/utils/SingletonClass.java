@@ -3,6 +3,7 @@ package com.utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -48,6 +49,7 @@ public class SingletonClass {
 		//Instantiate Appium Driver
 		try {
 				 driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+				 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			
 		} catch (MalformedURLException e) {
 			SwitchAppTest.log.error(e.getMessage());
