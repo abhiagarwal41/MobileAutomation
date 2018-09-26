@@ -138,4 +138,49 @@ public class CustomSteps {
 			doLogging(" Actual rows: " + listItems.size() + " Expected rows: " + expectedRowCount, "FAIL", log, test);
 	}
 
+	@When("^I input random card number and expiry as 1221 to upiswitchTestApp app$")
+	public void ienternameAndNumberOnCard() throws IOException {
+		
+		doLogging("inputting card number and expiry date", "INFO", log, test);
+		try {
+			WebElement cardDigits = driver.findElement(getTestPage().getElementLocator("cardDigits"));
+			WebElement expDate = driver.findElement(getTestPage().getElementLocator("expiryDate"));
+			
+		List<WebElement>digits=	cardDigits.findElements(By.className("android.widget.EditText"));
+			for(WebElement digit: digits) {
+				digit.sendKeys("2");
+			}
+		List<WebElement>exp=	expDate.findElements(By.className("android.widget.EditText"));
+		exp.get(0).sendKeys("1");
+		exp.get(1).sendKeys("2");
+		exp.get(2).sendKeys("2");
+		exp.get(3).sendKeys("1");
+		
+		} catch (Exception e) {
+			doLogging("Unable to login: " + e.getMessage(), "FAIL", log, test);
+			fail("Unable to login : " + e.getMessage());
+		}
+	}
+	
+	@When("^I submit Mpin in CL page")
+	public void sumitInClActivity() {
+		doLogging("Click submit in CL's Set up Mpin Activity", "INFO", log, test);
+		try {
+		List<WebElement> tableRows =driver.findElements(By.className("android.widget.TableRow"));
+		List<WebElement> imagebtns = tableRows.get(2).findElements(By.className("android.widget.ImageView"));
+		imagebtns.get(1).click();
+		}catch(Exception ex) {
+			doLogging("Could not submit Mpin to CL library"+ex.getMessage(),"FAIL",log,test);
+		}
+	}
+	@When("^I select and input UPI Pin")
+	public void selecUpiPin(){
+		driver.findElements(By.id("com.rohitupreti.testapplication:id/form_item_input")).get(1).click();
+		List<WebElement> tableRows =driver.findElements(By.className("android.widget.TableRow"));
+	WebElement btn5 =	tableRows.get(1).findElements(By.className("android.widget.TextView")).get(1);
+	for(int i=0;i<6;i++) {
+		btn5.click();
+	}
+		
+	}
 }

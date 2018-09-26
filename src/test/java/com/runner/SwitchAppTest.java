@@ -30,7 +30,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = true, features = "src/test/resources/features/switch", glue = "com.steps", snippets = SnippetType.CAMELCASE, tags = {
-		"@test" }, monochrome = true)
+		"@test1" }, monochrome = true)
 public class SwitchAppTest {
 
 	public static SoftAssertions softAssertions;

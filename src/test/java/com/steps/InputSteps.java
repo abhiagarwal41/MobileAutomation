@@ -18,6 +18,7 @@ import com.utils.Functions;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.appium.java_client.android.AndroidKeyCode;
 
 public class InputSteps {
 
@@ -152,4 +153,15 @@ public class InputSteps {
 		}
 	}
 
+	@When("I press back button$")
+	public void pressBackButton() {
+		doLogging("pressing back button", "INFO", log, test);
+		try {
+			driver.sendKeyEvent(AndroidKeyCode.BACK);
+		} catch (Exception ne) {
+			doLogging("Unable to press back button", "FAIL", log, test);
+			fail("Unable to press back button");
+		}
+
+	}
 }

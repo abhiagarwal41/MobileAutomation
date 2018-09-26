@@ -4,7 +4,7 @@ Feature: Test login scenarios
 Background: 
 Given I start application
 
-Scenario: Login with valid credentials
+Scenario: Register mobile with valid credentials
 Given I Wait for "switchtestapploginpage" to load
 When I Provide "PASSCODE" text input as "1234"
 Then I Wait for "switchtestappmobileregisterpage" to load
@@ -15,4 +15,31 @@ And I click on "Send"
 And I Wait for "switchtestappcreatevpapage" to load
 And I Provide "VpaName" random text input as alphanumeric characters
 And I click on "CheckAvailabilityButton"
+And I Wait for "switchtestappmobilehomepage" to load
+And I click on "AddAccount"
+And I click on "ListAccountProvider"
 
+@test1
+Scenario: Register mobile with valid credentials
+Given I Wait for "switchtestapploginpage" to load
+When I Provide "PASSCODE" text input as "1234"
+And I Wait for "switchtestappcreatevpapage" to load
+And I Provide "VpaName" random text input as alphanumeric characters
+And I click on "CheckAvailabilityButton"
+And I Wait for "switchtestappmobilehomepage" to load
+And I click on "AddAccount"
+And I click on "ListAccountProvider"
+And I Wait until "LISTELEMENT" is present
+And I click on list element which has text "name='ICICI'"
+And I Wait for "5" seconds
+And I click on "LISTELEMENT"
+And I click on "SelectedAccount"
+And I input random card number and expiry as 1221 to upiswitchTestApp app
+And I click on "requestOtp"
+And I press back button
+And I Wait until "RegisterMobile" is present
+And I click on "RegisterMobile"
+And I select and input UPI Pin
+And I submit Mpin in CL page
+And I select and input UPI Pin
+And I submit Mpin in CL page
