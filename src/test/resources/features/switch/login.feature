@@ -65,3 +65,12 @@ And I select and input UPI Pin
 And I submit Mpin in CL page
 And I select and input UPI Pin
 And I submit Mpin in CL page
+
+@test2
+Scenario: Get Accounts request
+Given I Wait for "switchtestapploginpage" to load
+Given I start a log read thread searching for keyword "com.rohitupreti.testapplication"
+When I Provide "PASSCODE" text input as "1234"
+And I Wait for "switchtestappmobilehomepage" to load
+And I click on "GetAccounts"
+And I Wait until "Message" is present

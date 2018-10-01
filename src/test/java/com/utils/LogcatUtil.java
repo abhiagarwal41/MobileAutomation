@@ -1,6 +1,7 @@
 package com.utils;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,14 +20,13 @@ public class LogcatUtil {
 	       return result;
 	   }
 
-	   public static List<String> runProcess(boolean isWin, String... command) {
+	   public static List<String> runProcess(boolean isWin,String parameter, String... command) throws IOException {
 	       System.out.print("command to run: ");
 	       for (String s : command) {
 	           System.out.print(s);
 	       }
 	       System.out.print("\n");
 	       String[] allCommand = null;
-	       try {
 	           if (isWin) {
 	               allCommand = concat(WIN_RUNTIME, command);
 	           } else {
@@ -40,17 +40,19 @@ public class LogcatUtil {
 	           String _temp = null;
 	           List<String> line = new ArrayList<String>();
 	           while ((_temp = in.readLine()) != null) {
-	               if(_temp.contains("com.rohitupreti.testapplication")) {
-		               System.out.println("temp line: " + _temp);
-		               line.add(_temp);
+	        	   if (Thread.interrupted()) {
+//		    		   throw new InterruptedException();
+		    		   break;
+		    	   }
+	        	   if(_temp.contains("com.rohitupreti.testapplication")) {
+		              
+		               if(_temp.contains(parameter)) {
+		            	   System.out.println("temp line: " + _temp);
+			               line.add(_temp);	   
+		               }
 	               }
 	           }
 	           System.out.println("result after command: " + line);
 	           return line;
-
-	       } catch (Exception e) {
-	           e.printStackTrace();
-	           return null;
-	       }
 	   }
 	}

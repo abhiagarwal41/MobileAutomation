@@ -13,6 +13,10 @@ public class SwitchTestAppMobileHomePage extends AbstractPage{
 		switch (name.toUpperCase()) {
 		case "ADDACCOUNT": 
 			return By.id("com.rohitupreti.testapplication:id/addAccount");
+		case "GETACCOUNTS":
+			return By.id("com.rohitupreti.testapplication:id/getAccounts");
+		case "MESSAGE":
+			return By.id("android:id/message");
 		case "LISTACCOUNTPROVIDER":
 			return By.id("com.rohitupreti.testapplication:id/listAccountProviderButton");
 		case "LISTELEMENT":
