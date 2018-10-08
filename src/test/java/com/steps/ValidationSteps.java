@@ -16,6 +16,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class ValidationSteps {
 	
@@ -98,5 +99,13 @@ public class ValidationSteps {
 	       softAssertions.assertAll();
 	}
 	
+	@Then("I Verify that \"(.*?)\" contains text \"(.*?)\"$")
+	public void verifyItemHasText(String elementName,String text) {
+		WebElement element = driver.findElement(getTestPage().getElementLocator(elementName));
+		 softAssertions.assertThat(element.getText().contains(text));
+		 if (element.getText().contains(text)) doLogging(elementName+" has text "+text,"PASS",log,test);
+		 else doLogging(elementName+" does not have text "+text,"FAIL",log,test);
+		 softAssertions.assertAll();
+	}
 	
 }

@@ -35,6 +35,8 @@ public class SwitchTestAppMobileHomePage extends AbstractPage{
 			return By.id("android:id/button1");
 		case "UPIPIN":
 			return By.id("com.rohitupreti.testapplication:id/form_item_input");
+		case "ACCOUNT":
+			return By.id("com.rohitupreti.testapplication:id/listViewAccounts");
 		default:
 			throw new NoSuchElementException(name);
 		}

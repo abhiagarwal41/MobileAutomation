@@ -157,7 +157,7 @@ public class InputSteps {
 	public void pressBackButton() {
 		doLogging("pressing back button", "INFO", log, test);
 		try {
-			driver.sendKeyEvent(AndroidKeyCode.BACK);
+			driver.pressKeyCode(AndroidKeyCode.BACK);
 		} catch (Exception ne) {
 			doLogging("Unable to press back button", "FAIL", log, test);
 			fail("Unable to press back button");

@@ -24,16 +24,18 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 
 
 
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = true, features = "src/test/resources/features/switch", glue = "com.steps", snippets = SnippetType.CAMELCASE, tags = {
-		"@test1" }, monochrome = true)
+		"@test2" }, monochrome = true)
 public class SwitchAppTest {
 
 	public static SoftAssertions softAssertions;
+//	public static WebDriver driver;
 	public static AndroidDriver driver;
 	public static Logger log = Logger.getLogger(SwitchAppTest.class);
 	public static ExtentHtmlReporter htmlReporter;

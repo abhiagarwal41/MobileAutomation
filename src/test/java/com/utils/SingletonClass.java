@@ -49,7 +49,7 @@ public class SingletonClass {
 		//Instantiate Appium Driver
 		try {
 				 driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-				 driver.manage().timeouts().implicitlyWait(150, TimeUnit.SECONDS);
+				 driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
 			
 		} catch (MalformedURLException e) {
 			SwitchAppTest.log.error(e.getMessage());

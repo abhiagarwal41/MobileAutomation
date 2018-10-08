@@ -175,7 +175,8 @@ public class CustomSteps {
 	}
 	@When("^I select and input UPI Pin")
 	public void selecUpiPin(){
-		driver.findElements(By.id("com.rohitupreti.testapplication:id/form_item_input")).get(1).click();
+	List<WebElement> elementList =	driver.findElements(By.id("com.rohitupreti.testapplication:id/form_item_input"));
+	elementList.get(1).click();
 		List<WebElement> tableRows =driver.findElements(By.className("android.widget.TableRow"));
 	WebElement btn5 =	tableRows.get(1).findElements(By.className("android.widget.TextView")).get(1);
 	for(int i=0;i<6;i++) {
