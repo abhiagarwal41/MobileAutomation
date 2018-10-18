@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 import com.pages.switchTestApp.SwitchTestAppCreateVpaPage;
 import com.pages.switchTestApp.SwitchTestAppLoginPage;
+import com.pages.switchTestApp.SwitchTestAppMobileAccDetailsPage;
 import com.pages.switchTestApp.SwitchTestAppMobileHomePage;
 import com.pages.switchTestApp.SwitchTestAppMobileRegisterPage;
 
@@ -33,6 +34,9 @@ public abstract class AbstractPage {
 			break;
 		case "switchtestappmobilehomepage":
 			testPage = new SwitchTestAppMobileHomePage();
+			break;
+		case "switchtestappmobileaccdetailspage":
+			testPage = new SwitchTestAppMobileAccDetailsPage();
 			break;
 
 		default:

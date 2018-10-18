@@ -70,10 +70,19 @@ And I submit Mpin in CL page
 @test2
 Scenario: Get Accounts request
 Given I Wait for "switchtestapploginpage" to load
-Given I start a log read thread searching for keyword "com.rohitupreti.testapplication"
+Given I start a log read thread searching for keyword "upi:RespBalEnq"
 When I Provide "PASSCODE" text input as "1234"
 And I Wait for "switchtestappmobilehomepage" to load
 And I Wait until "GetAccounts" is present
 And I click on "GetAccounts"
+And I Wait until "LISTELEMENT" is present
 And I Verify that "LISTELEMENT" contains text "Prakhar"
 And I click on element at 0 index of "ListElement" list
+And I Wait for "switchtestappmobileAccDetailsPage" to load
+And I Wait until "CHECK BALANCE" is present
+And I click on "CHECK BALANCE"
+And I select and input UPI Pin
+And I submit Mpin in CL page
+And I Wait for "15" seconds
+Then I verify response request "upi:RespBalEnq" contains result as "SUCCESS"
+

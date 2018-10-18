@@ -47,8 +47,8 @@ public class SwitchAppTest {
 
 		PropertyConfigurator.configure(logPropertiesPath);
 		intializeExtentReporting();
-		log.info("Initializing logs for LMS UI tests...");
-		application = "lms";
+		log.info("Initializing logs for Upi Switch test Application UI tests...");
+		application = "switchTestApp";
 		File screenshotDir = new File("./FailedTestsScreenshots/switch");
 		if (!screenshotDir.exists()) {
 			screenshotDir.mkdirs();

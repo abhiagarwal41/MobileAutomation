@@ -1,6 +1,7 @@
 package com.utils;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 public class LogcatUtil {
 	   private static final String[] WIN_RUNTIME = { "cmd.exe", "/C" };
 	   private static final String[] OS_LINUX_RUNTIME = { "/bin/bash", "-l", "-c" };
+	   private static final String filePath = "./logs/response.txt";
 
 	   private LogcatUtil() {
 	   }
@@ -39,6 +41,7 @@ public class LogcatUtil {
 	           BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
 	           String _temp = null;
 	           List<String> line = new ArrayList<String>();
+	           FileWriter writer = new FileWriter(filePath);
 	           while ((_temp = in.readLine()) != null) {
 	        	   if (Thread.interrupted()) {
 //		    		   throw new InterruptedException();
@@ -48,11 +51,14 @@ public class LogcatUtil {
 		              
 		               if(_temp.contains(parameter)) {
 		            	   System.out.println("temp line: " + _temp);
+		            	   writer.write(_temp);
 			               line.add(_temp);	   
 		               }
 	               }
 	           }
 	           System.out.println("result after command: " + line);
+	           writer.flush();
+	           writer.close();
 	           return line;
 	   }
 	}
