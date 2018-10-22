@@ -22,6 +22,8 @@ import org.openqa.selenium.interactions.touch.TouchActions;
 
 import cucumber.api.java.en.When;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class ClickSteps {
 
@@ -100,7 +102,7 @@ public class ClickSteps {
 		System.out.println("starty = " + starty + " ,endy = " + endy + " , startx = " + startx);
 		TouchAction ta = new TouchAction(driver);
 //		ta.press(startx, starty).waitAction(Duration.ofSeconds(3)).moveTo(startx, endy).release().perform();
-		
+		ta.press(new PointOption().withCoordinates(startx, starty)).waitAction(new WaitOptions().withDuration(Duration.ofSeconds(3))).moveTo(new PointOption().withCoordinates(startx, endy)).release().perform();
 		try {
 			TimeUnit.MILLISECONDS.sleep(3000);
 		} catch (InterruptedException e) {
