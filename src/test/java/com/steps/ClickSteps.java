@@ -99,7 +99,7 @@ public class ClickSteps {
 		int startx = size.width / 2;
 		System.out.println("starty = " + starty + " ,endy = " + endy + " , startx = " + startx);
 		TouchAction ta = new TouchAction(driver);
-		ta.press(startx, starty).waitAction(Duration.ofSeconds(3)).moveTo(startx, endy).release().perform();
+//		ta.press(startx, starty).waitAction(Duration.ofSeconds(3)).moveTo(startx, endy).release().perform();
 		
 		try {
 			TimeUnit.MILLISECONDS.sleep(3000);

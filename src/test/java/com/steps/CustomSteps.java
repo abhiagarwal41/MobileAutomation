@@ -71,7 +71,7 @@ public class CustomSteps {
 			}
 		}
 
-		 softAssertions.assertAll();
+		softAssertions.assertAll();
 
 	}
 
@@ -85,24 +85,24 @@ public class CustomSteps {
 		List<WebElement> listItems = element.findElements(By.cssSelector(".mat-list-item"));
 
 		for (int j = 0; j < dataToVerify.size(); j++) {
-			
+
 			WebElement actualRow = listItems.get(j);
 			List<WebElement> spans = actualRow.findElements(By.tagName("span"));
 			List<String> actualData = new ArrayList<String>();
 			for (WebElement span : spans)
 				actualData.add(span.getText());
 			List<String> expectedData = dataToVerify.get(j);
-			
+
 			for (int i = 0; i < expectedData.size(); i++) {
 
 				String actualValue = actualData.get(i);
 				String expectedValue = expectedData.get(i);
-				if(expectedValue.contains("current_date")) {
-					expectedValue=expectedValue.replace("current_date", "").replace("+", "").replaceAll(" ", "");
-					if(expectedValue.isEmpty())
-						expectedValue=getDiffDate(0, "MMM d, yyyy");
+				if (expectedValue.contains("current_date")) {
+					expectedValue = expectedValue.replace("current_date", "").replace("+", "").replaceAll(" ", "");
+					if (expectedValue.isEmpty())
+						expectedValue = getDiffDate(0, "MMM d, yyyy");
 					else
-						expectedValue=getDiffDate(Integer.parseInt(expectedValue), "MMM d, yyyy");
+						expectedValue = getDiffDate(Integer.parseInt(expectedValue), "MMM d, yyyy");
 				}
 				softAssertions.assertThat(actualValue.trim()).isEqualToIgnoringCase(expectedValue.trim());
 				if (actualValue.trim().equalsIgnoreCase(expectedValue.trim()))
@@ -113,7 +113,7 @@ public class CustomSteps {
 
 		}
 
-		 softAssertions.assertAll();
+		softAssertions.assertAll();
 
 	}
 
@@ -125,14 +125,14 @@ public class CustomSteps {
 		}
 		return null;
 	}
-	
+
 	@Then("^Verify that table \"([^\"]*)\" has \"([^\"]*)\" rows$")
 	public void verifyDataForTable(String elementName, int expectedRowCount) throws Throwable {
-		
+
 		WebElement element = driver.findElement(getTestPage().getElementLocator(elementName));
 		List<WebElement> listItems = element.findElements(By.cssSelector(".mat-list-item"));
 		softAssertions.assertThat(listItems.size()).isEqualTo(expectedRowCount);
-		if(listItems.size()==expectedRowCount)
+		if (listItems.size() == expectedRowCount)
 			doLogging(" Actual rows: " + listItems.size() + " Expected rows: " + expectedRowCount, "PASS", log, test);
 		else
 			doLogging(" Actual rows: " + listItems.size() + " Expected rows: " + expectedRowCount, "FAIL", log, test);
@@ -140,53 +140,57 @@ public class CustomSteps {
 
 	@When("^I input random card number and expiry as 1221 to upiswitchTestApp app$")
 	public void ienternameAndNumberOnCard() throws IOException {
-		
+
 		doLogging("inputting card number and expiry date", "INFO", log, test);
 		try {
 			WebElement cardDigits = driver.findElement(getTestPage().getElementLocator("cardDigits"));
 			WebElement expDate = driver.findElement(getTestPage().getElementLocator("expiryDate"));
-			
-		List<WebElement>digits=	cardDigits.findElements(By.className("android.widget.EditText"));
-			for(WebElement digit: digits) {
+
+			List<WebElement> digits = cardDigits.findElements(By.className("android.widget.EditText"));
+			for (WebElement digit : digits) {
 				digit.sendKeys("2");
 			}
-		List<WebElement>exp=	expDate.findElements(By.className("android.widget.EditText"));
-		exp.get(0).sendKeys("1");
-		exp.get(1).sendKeys("2");
-		exp.get(2).sendKeys("2");
-		exp.get(3).sendKeys("1");
-		
+			List<WebElement> exp = expDate.findElements(By.className("android.widget.EditText"));
+			exp.get(0).sendKeys("1");
+			exp.get(1).sendKeys("2");
+			exp.get(2).sendKeys("2");
+			exp.get(3).sendKeys("1");
+
 		} catch (Exception e) {
 			doLogging("Unable to login: " + e.getMessage(), "FAIL", log, test);
 			fail("Unable to login : " + e.getMessage());
 		}
 	}
-	
+
 	@When("^I submit Mpin in CL page")
 	public void sumitInClActivity() {
 		doLogging("Click submit in CL's Set up Mpin Activity", "INFO", log, test);
 		try {
-		List<WebElement> tableRows =driver.findElements(By.className("android.widget.TableRow"));
-		List<WebElement> imagebtns = tableRows.get(2).findElements(By.className("android.widget.ImageView"));
-		imagebtns.get(1).click();
-		}catch(Exception ex) {
-			doLogging("Could not submit Mpin to CL library"+ex.getMessage(),"FAIL",log,test);
+			List<WebElement> tableRows = driver.findElements(By.className("android.widget.TableRow"));
+			List<WebElement> imagebtns = tableRows.get(2).findElements(By.className("android.widget.ImageView"));
+			imagebtns.get(1).click();
+		} catch (Exception ex) {
+			doLogging("Could not submit Mpin to CL library" + ex.getMessage(), "FAIL", log, test);
 		}
 	}
+
 	@When("^I select and input UPI Pin")
-	public void selecUpiPin(){
-//	List<WebElement> elementList =	driver.findElements(By.id("com.rohitupreti.testapplication:id/form_item_input"));
-//	elementList.get(1).click();
-//		List<WebElement> tableRows =driver.findElements(By.className("android.widget.TableRow"));
-//	WebElement btn5 =	tableRows.get(1).findElements(By.className("android.widget.TextView")).get(1);
-		List<WebElement> buttons =driver.findElements(By.className("android.widget.TextView"));
-	for(int i=0;i<6;i++) {
-	for(WebElement btn: buttons) {
-		if(btn.getText().contains("5")) {
-			btn.click();
+	public void selecUpiPin() {
+		// List<WebElement> elementList =
+		// driver.findElements(By.id("com.rohitupreti.testapplication:id/form_item_input"));
+		// elementList.get(1).click();
+		// List<WebElement> tableRows
+		// =driver.findElements(By.className("android.widget.TableRow"));
+		// WebElement btn5 =
+		// tableRows.get(1).findElements(By.className("android.widget.TextView")).get(1);
+		List<WebElement> buttons = driver.findElements(By.className("android.widget.TextView"));
+		for (int i = 0; i < 6; i++) {
+			for (WebElement btn : buttons) {
+				if (btn.getText().contains("5")) {
+					btn.click();
+				}
+			}
 		}
-	}
-	}
-		
+
 	}
 }

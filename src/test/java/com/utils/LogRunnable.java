@@ -13,7 +13,7 @@ public class LogRunnable implements Runnable {
 		// TODO Auto-generated method stub
 		try {
 			
-		LogcatUtil.runProcess(false,this.searchKeyword, "adb shell logcat");
+		LogcatUtil.runProcess(true,this.searchKeyword, "adb shell logcat");
 		System.out.println("Done");
 			  
 		}
